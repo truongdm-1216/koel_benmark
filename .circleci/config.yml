@@ -33,7 +33,7 @@ jobs:
       - save_cache:
           key: node-modules-v1-{{ checksum "yarn.lock" }}
           paths:
-            - node_modules
+            - resources/assets/node_modules
 
       # run
       - run: framgia-ci test-connect 127.0.0.1 3306 80

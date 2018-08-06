@@ -18,6 +18,8 @@ test:
     command: phpmd app xml cleancode,codesize,controversial,design,naming,unusedcode --reportfile .framgia-ci-reports/phpmd.xml
   phpunit:
     command:
+      - php artisan migrate --database=mysql_test
+      - php artisan db:seed --database=mysql_test --class=UniversityTableSeeder
       - php -dzend_extension=xdebug.so vendor/bin/phpunit
         --coverage-clover=.framgia-ci-reports/coverage-clover.xml
         --coverage-html=.framgia-ci-reports/coverage
