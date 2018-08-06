@@ -11,7 +11,7 @@ build:
           MYSQL_PASSWORD: secret
           MYSQL_ROOT_PASSWORD: root
     prepare:
-      - cp .env.example .env
+      - cp .env.civ3.example .env
       - composer install
       - cd resources/assets && yarn install
       - framgia-ci test-connect mysql_test 3306 80
