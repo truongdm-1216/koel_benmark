@@ -28,10 +28,10 @@ jobs:
       # node cache
       - restore_cache:
           keys:
-            - node-modules-v1-{{ checksum "yarn.lock" }}
+            - node-modules-v2-{{ checksum "yarn.lock" }}
       - run: cd resources/assets && yarn install
       - save_cache:
-          key: node-modules-v1-{{ checksum "yarn.lock" }}
+          key: node-modules-v2-{{ checksum "yarn.lock" }}
           paths:
             - resources/assets/node_modules
 
