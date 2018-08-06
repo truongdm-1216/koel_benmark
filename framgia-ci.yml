@@ -1,10 +1,28 @@
 project_type: php
+build:
+  general_test:
+    image: daothaison/civ3-workspace:latest
+    services:
+      mysql_test:
+        image: mysql:5.7
+        environment:
+          MYSQL_DATABASE: homestead_test
+          MYSQL_USER: homestead_test
+          MYSQL_PASSWORD: secret
+          MYSQL_ROOT_PASSWORD: root
+    prepare:
+      - cp .env.example .env
+      - composer install
+      - cd resources/assets && yarn install
+      - framgia-ci test-connect mysql_test 3306 80
+      - framgia-ci run --local
 test:
   eslint:
     command: cd resources/assets && yarn lint
   moacha:
     command: cd resources/assets && yarn test:coverage
   phpcs:
+    ignore: true
     command: phpcs --standard=Framgia --encoding=utf-8 --report-checkstyle=.framgia-ci-reports/phpcs.xml app
   phpmetrics:
     ignore: true
@@ -15,6 +33,7 @@ test:
     ignore: true
     command: phpmd app xml cleancode,codesize,controversial,design,naming,unusedcode --reportfile .framgia-ci-reports/phpmd.xml
   phpunit:
+    ignore: true
     command:
       - php artisan migrate --database=mysql_test
       - php -dzend_extension=xdebug.so vendor/bin/phpunit
@@ -29,3 +48,10 @@ test:
       --jdepend-chart=.framgia-ci-reports/pdepend.svg
       --overview-pyramid=.framgia-ci-reports/pyramid.svg
       app
+cache:
+  composer:
+    folder: vendor
+    file: composer.lock
+  nodejs:
+    folder: resources/assets/node_modules
+    file: resources/assets/yarn.lock

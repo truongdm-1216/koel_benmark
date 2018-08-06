@@ -1,0 +1,21 @@
+build:
+  image: daothaison/civ3-workspace:latest
+  commands:
+    - cp .env.example .env
+    - composer install
+    - cd resources/assets && yarn install
+    - framgia-ci test-connect 127.0.0.1 3306 80
+    - framgia-ci run --local
+compose:
+  database:
+    image: mysql:5.7
+    environment:
+      MYSQL_HOST: 127.0.0.1
+      MYSQL_DATABASE: homestead_test
+      MYSQL_USER: homestead_test
+      MYSQL_PASSWORD: secret
+      MYSQL_ROOT_PASSWORD: root
+cache:
+  mount:
+    - resources/assets/node_modules
+    - vendor

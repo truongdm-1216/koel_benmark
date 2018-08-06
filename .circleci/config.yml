@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: 7896/civ3-workspace:2.0
+      - image: daothaison/civ3-workspace:latest
       - image: mysql:5.7
         environment:
           MYSQL_HOST: 127.0.0.1
@@ -18,20 +18,20 @@ jobs:
       # composer cache
       - restore_cache:
           keys:
-            - vendor-v1-{{ checksum "composer.lock" }}
+            - vendor-v3-{{ checksum "composer.lock" }}
       - run: composer install
       - save_cache:
-          key: vendor-v1-{{ checksum "composer.lock" }}
+          key: vendor-v3-{{ checksum "composer.lock" }}
           paths:
             - vendor
 
       # node cache
       - restore_cache:
           keys:
-            - node-modules-v2-{{ checksum "yarn.lock" }}
+            - node-modules-v3-{{ checksum "resources/assets/yarn.lock" }}
       - run: cd resources/assets && yarn install
       - save_cache:
-          key: node-modules-v2-{{ checksum "yarn.lock" }}
+          key: node-modules-v3-{{ checksum "resources/assets/yarn.lock" }}
           paths:
             - resources/assets/node_modules
 
