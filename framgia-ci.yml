@@ -15,10 +15,9 @@ build:
       - composer install
       - cd resources/assets && yarn install
       - framgia-ci test-connect mysql_test 3306 80
+      - pwd
       - framgia-ci run --local
 test:
-  check:
-    command: pwd
   eslint:
     command: cd resources/assets && yarn lint
   mocha:
