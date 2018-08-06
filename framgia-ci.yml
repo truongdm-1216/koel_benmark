@@ -16,7 +16,6 @@ build:
       - cd resources/assets && yarn install
       - framgia-ci test-connect mysql_test 3306 80
       - cd ../..
-      - echo pwd
       - framgia-ci run --local
 test:
   eslint:
