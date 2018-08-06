@@ -18,9 +18,9 @@ build:
       - framgia-ci run --local
 test:
   eslint:
-    command: cd resources/assets && yarn lint
-  moacha:
-    command: cd resources/assets && yarn test:coverage
+    command: cd ../.. && cd resources/assets && yarn lint
+  mocha:
+    command: cd ../.. && cd resources/assets && yarn test:coverage
   phpcs:
     ignore: true
     command: phpcs --standard=Framgia --encoding=utf-8 --report-checkstyle=.framgia-ci-reports/phpcs.xml app
