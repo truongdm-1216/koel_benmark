@@ -24,7 +24,7 @@ test:
     command: cd resources/assets && yarn test:coverage
   phpcs:
     ignore: true
-    command: phpcs --standard=Framgia --encoding=utf-8 --report-checkstyle=.framgia-ci-reports/phpcs.xml app
+    command: echo '' | phpcs --standard=Framgia --encoding=utf-8 --report-checkstyle=.framgia-ci-reports/phpcs.xml app
   phpmetrics:
     ignore: true
     command: phpmetrics --report-html=.framgia-ci-reports/metrics.html
