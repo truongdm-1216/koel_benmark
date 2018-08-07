@@ -13,9 +13,10 @@ build:
     prepare:
       - cp .env.civ3.example .env
       - composer install
-      # - cd resources/assets && yarn install
+      - cd resources/assets
+      - yarn install
+      - cd ../../
       - framgia-ci test-connect mysql_test 3306 80
-      # - cd ../..
       - framgia-ci run --local
 test:
   eslint:
