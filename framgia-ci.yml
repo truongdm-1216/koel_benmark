@@ -1,7 +1,7 @@
 project_type: php
 build:
   general_test:
-    image: daothaison/civ3-workspace:latest
+    image: framgiaciteam/laravel-workspace:latest
     services:
       mysql_test:
         image: mysql:5.7
@@ -13,9 +13,6 @@ build:
     prepare:
       - cp .env.civ3.example .env
       - composer install
-      - cd resources/assets
-      - yarn install
-      - cd ../../
       - framgia-ci test-connect mysql_test 3306 80
 test:
   eslint:
