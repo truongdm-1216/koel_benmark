@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: daothaison/civ3-workspace:latest
+      - image: framgiaciteam/laravel:benmark
       - image: mysql:5.7
         environment:
           MYSQL_HOST: 127.0.0.1
@@ -38,5 +38,3 @@ jobs:
       # run
       - run: framgia-ci test-connect 127.0.0.1 3306 80
       - run: framgia-ci run --local
-      - store_test_results:
-          path: .framgia-ci-reports

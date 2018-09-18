@@ -1,5 +1,5 @@
 build:
-  image: daothaison/civ3-workspace:latest
+  image: framgiaciteam/laravel:benmark
   commands:
     - cp .env.example .env
     - composer install
