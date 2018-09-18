@@ -26,6 +26,3 @@ cache:
   composer:
     folder: vendor
     file: composer.lock
-  nodejs:
-    folder: resources/assets/node_modules
-    file: resources/assets/yarn.lock
