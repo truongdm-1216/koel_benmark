@@ -24,12 +24,12 @@ jobs:
           key: vendor-v3-{{ checksum "composer.lock" }}
           paths:
             - vendor
-
+      - run: php artisan cinfig:clear
       # node cache
       - restore_cache:
           keys:
             - node-modules-v3-{{ checksum "resources/assets/yarn.lock" }}
-      - run: cd resources/assets && yarn install
+      - run: yarn install
       - save_cache:
           key: node-modules-v3-{{ checksum "resources/assets/yarn.lock" }}
           paths:
