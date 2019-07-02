@@ -16,7 +16,7 @@ build:
       - cp .env.civ3.example .env
       - php artisan config:clear
       - composer install
-      - yarn install
+      - yarn install --ignore-platform 
       - framgia-ci test-connect mysql_test 3306 60
       - php artisan migrate --database=mysql_test
       - framgia-ci run --local
