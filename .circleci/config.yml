@@ -29,8 +29,8 @@ jobs:
       - restore_cache:
           keys:
             - node-modules-v3-{{ checksum "resources/assets/yarn.lock" }}
-      - run: yarn add node-sass
-      - run: yarn install --ignore-platform 
+      - run: npm install node-sass
+      - run: npm install
       - save_cache:
           key: node-modules-v3-{{ checksum "resources/assets/yarn.lock" }}
           paths:
