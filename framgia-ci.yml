@@ -67,5 +67,5 @@ cache:
     folder: vendor
     file: composer.lock
   nodejs:
-    folder: resources/assets/node_modules
-    file: resources/assets/yarn.lock
+    folder: node_modules
+    file: yarn.lock
