@@ -25,6 +25,7 @@ jobs:
           paths:
             - vendor
       - run: php artisan config:clear
+      - run: cat /etc/hosts && cat /etc/resolv.conf
       # node cache
       - restore_cache:
           keys:
